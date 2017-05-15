@@ -48,5 +48,21 @@ var get_all_enhancements = function(){
 }
 
 
+//Retrieve desciption of the an enhancement report report
+var get_report_description = function() {
+	var issue_id = 155482;
+	var URL = 'https://bugzilla.mozilla.org/rest/bug/'+issue_id+'/comment';
+	rest.get(URL).on('complete', function(data) {
+  		console.log("Retrieved desciption for the enhancement with id = " + issue_id);
+  		//var JSONcomments = JSON.parse(data);
+  		console.log(data['bugs'][issue_id]['comments'][0]['text']);
+	  	
+	});		
+	
+}
+
+
 console.log("#### enhancement retrieval program #####");
-get_product_enhancements();
+get_product_enhancements('Firefox');
+//get_all_enhancements();
+//get_report_description();
